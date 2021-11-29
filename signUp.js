@@ -17,6 +17,7 @@ const PEPPER = 'COMP523';
 // Given a username and password, securely stores that username and pw in the database
 // Returns true if operation is successful, false otherwise
 function signUp(username, pw) {
+    
     // Ensure that username doesn't already exist
     if (DB.some((user) => user.username === username)) {
         console.log("Username is already taken");
@@ -31,7 +32,7 @@ function signUp(username, pw) {
     // Returns a hex string sequence
     const hash = crypto.createHash('sha256').update(to_hash).digest('hex');
 
-    // Create a dictionary representing a user - stores the username, password, and salt values
+    // Create a dictionary representing a user
     const user = {
         'username': username,
         'pw': hash,
